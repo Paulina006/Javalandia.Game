@@ -5,7 +5,7 @@ public interface IRepositorio <T> {
 
     void registrar(T elemento);
 
-    void eliminar(T codigo);
+    boolean eliminar(T codigo);
 
     T buscar(int codigo);
 
