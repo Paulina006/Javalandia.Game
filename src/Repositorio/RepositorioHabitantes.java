@@ -4,8 +4,7 @@ import Modelo.Habitante;
 import Modelo.IHabitante;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class RepositorioHabitantes implements IRepositorio <IHabitante>{ //limito a que la clase utilice la Interfaz Habitante.
 
