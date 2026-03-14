@@ -17,7 +17,7 @@ public class ForjaReal implements IRepositorio {
     }
 
     @Override
-    public boolean eliminar(Object codigo) {
+    public boolean eliminar(int codigo) {
         return false;
     }
 

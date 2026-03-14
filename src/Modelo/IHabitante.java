@@ -5,7 +5,7 @@ public interface IHabitante  {
      String getNombre();
      String getReinoProcedencia();
      int getCodigoRegistro();
-     Boolean getIndicadorHonorabilidad();
+     boolean getIndicadorHonorabilidad();
 
     void setNombre(String nombre);
     void setReinoProcedencia(String reinoProcedencia);

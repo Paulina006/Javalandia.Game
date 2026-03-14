@@ -40,7 +40,7 @@ public abstract class Habitante implements IHabitante{  //clase abstracta que se
     }
 
     @Override
-    public Boolean getIndicadorHonorabilidad() {
+    public boolean getIndicadorHonorabilidad() {
         return this.indicadorHonorabilidad;
     }
 

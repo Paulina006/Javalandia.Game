@@ -1,5 +1,6 @@
 package Repositorio;
 
+import Excepcion.HabitanteDuplicadoException;
 import Modelo.Habitante;
 import Modelo.IHabitante;
 
@@ -10,22 +11,30 @@ public class RepositorioHabitantes implements IRepositorio <IHabitante>{ //limit
 
     private ArrayList<IHabitante> habitantes;
 
+    public RepositorioHabitantes() {
+        this.habitantes = new ArrayList<>();
+    }
+
     @Override
-    public void registrar(IHabitante elemento) {
+    public void registrar(IHabitante elemento) throws HabitanteDuplicadoException {
+        for(IHabitante h : habitantes) {
+            if(h.getCodigoRegistro()==elemento.getCodigoRegistro()) {
+                throw new HabitanteDuplicadoException("Error. Habitante duplicado");
+            }
+        }
         habitantes.add(elemento);
     }
 
     @Override
-    public boolean eliminar(IHabitante codigo) {
-        boolean flag=false;
-        for(int i=0; i<habitantes.size();i++){
-            if(habitantes.get(i).getCodigoRegistro()==codigo.getCodigoRegistro()){
-                habitantes.remove(i);
-                flag=true;
-            }
-        }
-        return flag;
-
+    public boolean eliminar(int codigo) {
+   for(int i=0;i<habitantes.size();i++){
+       if(habitantes.get(i).getCodigoRegistro() == codigo)
+       {
+           habitantes.remove(i);
+           return true;
+       }
+   }
+   return false;
     }
 
     @Override
@@ -50,11 +59,6 @@ public class RepositorioHabitantes implements IRepositorio <IHabitante>{ //limit
 
     @Override
     public int contar() {
-        int contador=0;
-        for(IHabitante i:habitantes)
-        {
-            contador++;
-        }
-        return contador;
+      return habitantes.size();
     }
 }
