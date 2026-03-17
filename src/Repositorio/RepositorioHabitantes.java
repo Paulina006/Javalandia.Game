@@ -26,7 +26,7 @@ public class RepositorioHabitantes implements IRepositorio <IHabitante>{ //limit
     }
 
     @Override
-    public boolean eliminar(int codigo) {
+    public boolean eliminar(int codigo) throws HabitanteDuplicadoException {
    for(int i=0;i<habitantes.size();i++){
        if(habitantes.get(i).getCodigoRegistro() == codigo)
        {
@@ -34,17 +34,17 @@ public class RepositorioHabitantes implements IRepositorio <IHabitante>{ //limit
            return true;
        }
    }
-   return false;
+    throw new HabitanteDuplicadoException("Habitante duplicado.");
     }
 
     @Override
-    public IHabitante buscar(int codigo) {
+    public IHabitante buscar(int codigo) throws HabitanteDuplicadoException {
         for(int i=0; i<habitantes.size();i++){
             if(habitantes.get(i).getCodigoRegistro()==codigo){
                 return habitantes.get(i);
             }
         }
-        return null;
+        throw new HabitanteDuplicadoException("Habitante no encontrado");
     }
 
     @Override
