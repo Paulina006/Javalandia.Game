@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.ArrayList;
 
-public class Arma {
+public class Arma implements IArma {
     private String nombreArma;
     private String categoria;
     private int cantDisponible;
@@ -13,5 +13,25 @@ public class Arma {
         this.categoria = categoria;
         this.cantDisponible = cantDisponible;
         this.materialCreacion = new ArrayList<>();
+    }
+
+    @Override
+    public String getNombreArma() {
+        return this.nombreArma;
+    }
+
+    @Override
+    public String getCategoria() {
+        return this.categoria;
+    }
+
+    @Override
+    public int getCantDisponible() {
+        return this.cantDisponible;
+    }
+
+    @Override
+    public ArrayList<String> getMaterialCreacion() {
+        return this.materialCreacion;
     }
 }

@@ -2,14 +2,14 @@ package Repositorio;
 
 import Excepcion.HabitanteDuplicadoException;
 
-public interface IRepositorio <T> {
+public interface IRepositorio <T, K> {
     // esta interfaz define QUE se puede hacer pero NO COMO se hace.
 
-    void registrar(T elemento) throws HabitanteDuplicadoException;
+    void registrar(T elemento) throws Exception;
 
-    boolean eliminar(int codigo) throws HabitanteDuplicadoException;
+    boolean eliminar(K codigo) throws Exception;
 
-    T buscar(int codigo) throws HabitanteDuplicadoException;
+    T buscar(K codigo) throws Exception;
 
     String listar();
     int contar();
