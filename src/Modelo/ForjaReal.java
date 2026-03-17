@@ -58,4 +58,9 @@ public class ForjaReal implements IRepositorio <Arma, String>{
     public int contar() {
         return listaArmas.size();
     }
+
+    public IArma buscarNombre(String nombre)
+    {
+        return listaArmas.get(nombre);
+    }
 }
