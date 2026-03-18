@@ -15,6 +15,11 @@ public class Arma implements IArma {
         this.materialCreacion = new ArrayList<>();
     }
 
+    public void cargarMaterialCreacion(String material)
+    {
+        materialCreacion.add(material);
+    }
+
     @Override
     public String getNombreArma() {
         return this.nombreArma;
