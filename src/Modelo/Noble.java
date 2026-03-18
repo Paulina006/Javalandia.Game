@@ -8,4 +8,11 @@ public class Noble extends Habitante{
         super(nombre, reinoProcedencia, codigoRegistro, indicadorHonorabilidad);
         this.privilegioReal = privilegioReal;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+"Noble{" +
+                "privilegioReal='" + privilegioReal + '\'' +
+                '}';
+    }
 }

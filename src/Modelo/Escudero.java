@@ -16,4 +16,11 @@ public class Escudero extends Habitante{
     {
         listaArmas.add(arma);
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+"Escudero{" +
+                "listaArmas=" + listaArmas +
+                '}';
+    }
 }

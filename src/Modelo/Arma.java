@@ -39,4 +39,14 @@ public class Arma implements IArma {
     public ArrayList<String> getMaterialCreacion() {
         return this.materialCreacion;
     }
+
+    @Override
+    public String toString() {
+        return "Arma{" +
+                "nombreArma='" + nombreArma + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", cantDisponible=" + cantDisponible +
+                ", materialCreacion=" + materialCreacion +
+                '}';
+    }
 }

@@ -62,4 +62,6 @@ public class RepositorioHabitantes implements IRepositorio <IHabitante, Integer>
     public int contar() {
       return habitantes.size();
     }
+
+
 }
