@@ -4,6 +4,9 @@ import Excepcion.ArmaDuplicadaException;
 import Excepcion.ArmaNoEncontradaException;
 import Excepcion.DatosIncompletosException;
 import Repositorio.IRepositorio;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +16,10 @@ public class ForjaReal implements IRepositorio <Arma, String>{
 
     public ForjaReal() {
         this.listaArmas = new HashMap<>();
+    }
+
+    public Map<String, Arma> getListaArmas() {
+        return listaArmas;
     }
 
     @Override
@@ -62,5 +69,15 @@ public class ForjaReal implements IRepositorio <Arma, String>{
     public IArma buscarNombre(String nombre)
     {
         return listaArmas.get(nombre);
+    }
+
+    public JSONObject toJSON() throws JSONException {
+        JSONObject jsonObject=new JSONObject();
+        JSONArray jsonArray=new JSONArray();
+        for (IArma arma : listaArmas.values()) {
+            jsonArray.put(arma.toJSON());
+        }
+        jsonObject.put("armas", jsonArray);
+        return jsonObject;
     }
 }

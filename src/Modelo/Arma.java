@@ -1,5 +1,8 @@
 package Modelo;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class Arma implements IArma {
@@ -49,4 +52,20 @@ public class Arma implements IArma {
                 ", materialCreacion=" + materialCreacion +
                 '}';
     }
+
+    @Override
+        public JSONObject toJSON() {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("nombre", this.nombreArma);
+            jsonObject.put("categoria", this.categoria);
+            jsonObject.put("cantidadDisponible", this.cantDisponible);
+
+            JSONArray materiales = new JSONArray();
+            for (String mat : this.materialCreacion) {
+                materiales.put(mat);
+            }
+
+            jsonObject.put("materialCreacion", materiales);
+            return jsonObject;
+        }
 }

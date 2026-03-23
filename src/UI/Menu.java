@@ -8,8 +8,10 @@ import Repositorio.RepositorioHabitantes;
 import java.util.Scanner;
 
 public class Menu {
-    IRepositorio repositorio;
-    ForjaReal forja;
+    private IRepositorio repositorio;
+    private ForjaReal forja;
+    private ArchivoBibliotecaReal archivoBibliotecaReal;
+    private final String archivo="armasForjadas";
 
     Scanner sc = new Scanner(System.in);
 
@@ -17,6 +19,7 @@ public class Menu {
     public Menu() {
         this.repositorio = new RepositorioHabitantes();
         this.forja = new ForjaReal();
+        this.archivoBibliotecaReal = new ArchivoBibliotecaReal();
     }
 
     public void menuCargarForja()
@@ -249,7 +252,10 @@ public class Menu {
             System.out.println("3. Buscar");
             System.out.println("4. Listar");
             System.out.println("5. Contar");
-            System.out.println("6. Salir");
+            System.out.println("6. Guardar armas en JSON");
+            System.out.println("7. Mostrar archivo JSON");
+            System.out.println("8. Salir");
+
             opcion = sc.nextInt();
 
             switch (opcion) {
@@ -269,12 +275,20 @@ public class Menu {
                     elegirContar();
                     break;
                 case 6:
+                    archivoBibliotecaReal.objetoAjson(forja);
+                    archivoBibliotecaReal.escribirArchivo(archivo);
+                    break;
+                case 7:
+                    String contenidoArchivo=archivoBibliotecaReal.mostrarArchivo(archivo);
+                    System.out.println(contenidoArchivo);
+                    break;
+                case 8:
                     seguir = 'n';
                     break;
                 default:
                     System.out.println("Opcion no valida");
             }
-            if (opcion != 6) {
+            if (opcion != 8) {
                 System.out.println("Desea elegir otra opcion?");
                 seguir = sc.next().charAt(0);
             }
